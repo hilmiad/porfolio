@@ -84,12 +84,11 @@
         body::after { width: 600px; height: 600px; bottom: -200px; right: -200px; background: linear-gradient(to right, #00cec9, #00b894); }
 
         /* --- ANIMATION (OPTIMIZED) --- */
-        /* FIX: Menghapus blur() agar tidak lag dan menggunakan will-change */
         .reveal { 
             opacity: 0; 
-            transform: translateY(30px); /* Jarak diperkecil sedikit agar lebih halus */
+            transform: translateY(30px); 
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            will-change: opacity, transform; /* Memberitahu browser untuk optimalisasi rendering */
+            will-change: opacity, transform; 
         }
         .reveal.active { 
             opacity: 1; 
@@ -136,26 +135,18 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            /* Nav Mobile Styling */
             .navigasi { padding: 15px 5%; border-radius: 0 0 30px 30px; }
-            
-            /* Layout Tombol Kiri Kanan */
             .nav-right {
-                width: 100%; /* Memenuhi container */
-                justify-content: space-between; /* Membuat jarak max antara CV dan Hamburger */
+                width: 100%; 
+                justify-content: space-between; 
             }
-
             .hamburger { display: block; }
-
-            /* FIX: Ukuran tombol CV diperkecil agar seimbang */
             .buttoncv { 
                 padding: 8px 16px; 
                 font-size: 13px; 
-                height: 40px; /* Menyamakan tinggi visual */
-                box-shadow: none; /* Hilangkan bayangan berlebih di mobile agar rapi */
+                height: 40px; 
+                box-shadow: none; 
             }
-            
-            /* Navbar Dropdown */
             .nav-items {
                 position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff;
                 flex-direction: column; align-items: flex-start; padding: 30px;
@@ -180,13 +171,11 @@
                 --bg-body: #121212; --bg-card: #1e1e1e; --text-main: #dfe6e9; --text-muted: #b2bec3;
                 --shadow-sm: 0 2px 8px rgba(0,0,0,0.4); --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
             }
-
             .navigasi { background-color: rgba(30, 30, 30, 0.98); border-bottom: 1px solid rgba(255,255,255,0.1); }
             body.menu-open .navigasi, .nav-items { background-color: #1e1e1e; border-top: 1px solid rgba(255,255,255,0.1); }
             .gallery-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
             .gallery-item { background: rgba(30,30,30,0.8); border: 1px solid rgba(255,255,255,0.1); }
             .badge-year { background: rgba(255,255,255,0.1); color: #dfe6e9; }
-            
             @media (max-width: 768px) {
                 .menu-links a { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
             }
@@ -260,8 +249,6 @@
         </div>
     </div>
 
-    <script>
-        <script src="projects.js"></script>
-    </script>
+    <script src="projects.js"></script>
 </body>
 </html>
