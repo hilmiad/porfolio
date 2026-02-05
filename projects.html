@@ -150,8 +150,8 @@
             /* FIX: Ukuran tombol CV diperkecil agar seimbang */
             .buttoncv { 
                 padding: 8px 16px; 
-                font-size: 12px; 
-                height: 36px; /* Menyamakan tinggi visual */
+                font-size: 13px; 
+                height: 40px; /* Menyamakan tinggi visual */
                 box-shadow: none; /* Hilangkan bayangan berlebih di mobile agar rapi */
             }
             
@@ -289,7 +289,7 @@
                     observer.unobserve(entry.target); 
                 } 
             });
-        }, { threshold: 0.15 }); // Threshold sedikit dinaikkan agar muncul lebih natural
+        }, { threshold: 0.15 }); 
         
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>

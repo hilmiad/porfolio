@@ -46,24 +46,23 @@
             color: var(--text-main);
             overflow-x: hidden;
             position: relative;
-            transition: background-color 0.3s ease, color 0.3s ease; /
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         body.menu-open { overflow: hidden; }
         section { scroll-margin-top: 120px; }
 
+        /* --- ANIMASI DIPERBAIKI (Hapus Blur agar tidak lag) --- */
         .reveal {
             opacity: 0;
-            transform: translateY(50px) scale(0.95); 
-            filter: blur(10px); 
-            transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
-            will-change: transform, opacity, filter;
+            transform: translateY(30px); 
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform; /* Optimasi performa render */
         }
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
+            transform: translateY(0);
         }
 
         .reveal-delay-1 { transition-delay: 0.1s; }
@@ -75,17 +74,11 @@
             filter: blur(100px); opacity: 0.15; pointer-events: none;
         }
         body::before { 
-            width: 500px; 
-            height: 500px; 
-            top: -150px; 
-            left: -150px; 
+            width: 500px; height: 500px; top: -150px; left: -150px; 
             background: linear-gradient(to right, #0984e3, #6c5ce7); 
         }
         body::after { 
-            width: 600px; 
-            height: 600px; 
-            bottom: -200px; 
-            right: -200px; 
+            width: 600px; height: 600px; bottom: -200px; right: -200px; 
             background: linear-gradient(to right, #00cec9, #00b894); 
         }
 
@@ -110,15 +103,8 @@
             background-color: #fff; 
         }
 
-        .nav-items { display: flex; 
-            align-items: center; 
-        }
-        .menu-links { 
-            display: flex; 
-            gap: 30px; 
-            font-weight: 500; 
-            font-size: 16px; 
-        }
+        .nav-items { display: flex; align-items: center; }
+        .menu-links { display: flex; gap: 30px; font-weight: 500; font-size: 16px; }
         .menu-links a { 
             text-decoration: none; 
             color: var(--text-muted); 
@@ -134,95 +120,56 @@
         }
 
         .menu-links a::after { 
-            content: ''; 
-            position: absolute; 
-            width: 0; 
-            height: 2px; 
+            content: ''; position: absolute; width: 0; height: 2px; 
             bottom: -4px; left: 0; 
-            background: var(--accent-gradient); 
-            transition: width 0.3s ease; 
+            background: var(--accent-gradient); transition: width 0.3s ease; 
         }
         .menu-links a:hover::after { width: 100%; }
 
         .nav-right { 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-            margin-left: auto; 
+            display: flex; align-items: center; gap: 15px; margin-left: auto; 
         }
         
         .buttoncv {
-            background: var(--accent-gradient); 
-            color: #fff !important; 
+            background: var(--accent-gradient); color: #fff !important; 
             padding: 10px 28px;
-            border-radius: 50px; 
-            font-weight: 600; 
-            font-size: 14px; 
+            border-radius: 50px; font-weight: 600; font-size: 14px; 
             text-decoration: none;
             transition: all 0.3s ease; 
             box-shadow: 0 4px 15px rgba(9, 132, 227, 0.2);
             white-space: nowrap; border: none;
+            display: inline-flex; align-items: center; justify-content: center;
         }
         .buttoncv:hover { 
-            filter: brightness(1.1); 
-            transform: translateY(-2px); 
+            filter: brightness(1.1); transform: translateY(-2px); 
             box-shadow: 0 8px 25px rgba(0, 206, 201, 0.4); 
         }
 
         .hamburger { 
-            display: none; 
-            cursor: pointer; 
-            color: var(--text-main); 
-            background: none; 
-            border: none; 
-            padding: 0; 
-            outline: none; 
+            display: none; cursor: pointer; color: var(--text-main); 
+            background: none; border: none; padding: 0; outline: none; 
         }
 
         .container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            padding: 0 25px; 
-            padding-top: 140px; 
+            max-width: 1100px; margin: 0 auto; padding: 0 25px; padding-top: 140px; 
         }
 
         .homepage {
             background-color: rgba(255, 255, 255, 0.8); 
             backdrop-filter: blur(10px);
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between;
-            padding: 60px; 
-            border-radius: 24px; 
-            margin-bottom: 60px; 
-            gap: 50px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 60px; border-radius: 24px; margin-bottom: 60px; gap: 50px;
             box-shadow: var(--shadow-md); 
             border: 1px solid rgba(255, 255, 255, 0.6);
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         }
-        .homepage:hover { 
-            transform: translateY(-5px); 
-            box-shadow: var(--shadow-lg); 
-        }
-        .homepage-text h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 36px; 
-            margin-top: 0; 
-            margin-bottom: 20px; 
-            line-height: 1.2; 
-        }
-        .homepage-text p { 
-            font-size: 18px; 
-            color: var(--text-muted); 
-            margin-bottom: 0; 
-        }
+        .homepage:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .homepage-text h1 { font-family: 'Playfair Display', serif; font-size: 36px; margin-top: 0; margin-bottom: 20px; line-height: 1.2; }
+        .homepage-text p { font-size: 18px; color: var(--text-muted); margin-bottom: 0; }
         .accent-text { 
-            font-weight: 600; 
-            background: var(--accent-gradient); 
-            background-clip: text; 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            display: inline-block; 
+            font-weight: 600; background: var(--accent-gradient); 
+            background-clip: text; -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; display: inline-block; 
         }
         .homepage img { width: 220px; height: 220px; object-fit: cover; border-radius: 20px; box-shadow: var(--shadow-md); transform: rotate(3deg); transition: transform 0.3s ease; }
         .homepage:hover img { transform: rotate(0deg) scale(1.02); }
@@ -231,7 +178,7 @@
         .section-title h2 { font-family: 'Playfair Display', serif; font-size: 32px; margin: 0; white-space: nowrap; }
         .section-title::after { content: ''; flex: 1; height: 1px; background-color: #e0e0e0; transition: background-color 0.3s ease; }
 
-        /* --- 4. CARDS & GRID --- */
+        /* --- CARDS & GRID --- */
         .grid-wrapper { display: grid; gap: 24px; grid-template-columns: 1fr; } 
         
         .card {
@@ -277,13 +224,27 @@
             .span-full { grid-column: 1 / -1; }
         }
 
-        /* --- 5. RESPONSIVE MOBILE --- */
+        /* --- 5. RESPONSIVE MOBILE (Disesuaikan) --- */
         @media (max-width: 768px) {
             .span-2, .span-3, .span-full { grid-column: span 1; }
             
             .navigasi { padding: 15px 5%; border-radius: 0 0 30px 30px; }
             .hamburger { display: block; }
-            .buttoncv { padding: 8px 20px; font-size: 13px; }
+            
+            /* Layout Kiri Kanan untuk Nav Mobile */
+            .nav-right {
+                width: 100%;
+                justify-content: space-between; /* CV kiri, Hamburger kanan */
+                margin-left: 0;
+            }
+
+            /* Ukuran tombol CV diperkecil agar tidak mendominasi */
+            .buttoncv { 
+                padding: 8px 16px; 
+                font-size: 13px;
+                height: 40px; /* Samakan tinggi dengan area sentuh hamburger */
+                box-shadow: none;
+            }
             
             .nav-items {
                 position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff;
@@ -304,46 +265,17 @@
         }
 
         /* --- 6. DARK MODE (SYSTEM SETTING) --- */
-        /* Script ini ditambahkan otomatis untuk mendeteksi preferensi sistem */
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-body: #121212;
-                --bg-card: #1e1e1e;
-                --text-main: #dfe6e9;
-                --text-muted: #b2bec3;
-                
-                /* Bayangan dipertebal agar terlihat di background gelap */
-                --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
-                --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
-                --shadow-lg: 0 15px 35px rgba(0,0,0,0.6);
+                --bg-body: #121212; --bg-card: #1e1e1e; --text-main: #dfe6e9; --text-muted: #b2bec3;
+                --shadow-sm: 0 2px 8px rgba(0,0,0,0.4); --shadow-md: 0 8px 24px rgba(0,0,0,0.5); --shadow-lg: 0 15px 35px rgba(0,0,0,0.6);
             }
-
-            /* Override Transparansi Hardcoded */
-            .navigasi {
-                background-color: rgba(30, 30, 30, 0.95);
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            body.menu-open .navigasi, 
-            .nav-items {
-                background-color: #1e1e1e;
-                border-top: 1px solid rgba(255,255,255,0.1);
-            }
-            
-            .homepage {
-                background-color: rgba(30, 30, 30, 0.8);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .card {
-                background-color: rgba(30, 30, 30, 0.9);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
+            .navigasi { background-color: rgba(30, 30, 30, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1); }
+            body.menu-open .navigasi, .nav-items { background-color: #1e1e1e; border-top: 1px solid rgba(255,255,255,0.1); }
+            .homepage { background-color: rgba(30, 30, 30, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); }
+            .card { background-color: rgba(30, 30, 30, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); }
             .job-item { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
             .section-title::after { background-color: rgba(255, 255, 255, 0.2); }
-            
-            /* Penyesuaian Mobile Menu di Dark Mode */
             @media (max-width: 768px) {
                 .menu-links a { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
             }
@@ -488,8 +420,11 @@
         const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('active'); } 
-                else { entry.target.classList.remove('active'); }
+                if (entry.isIntersecting) { 
+                    entry.target.classList.add('active'); 
+                    // FIX: Stop observing setelah muncul agar tidak hilang-hilang
+                    observer.unobserve(entry.target); 
+                } 
             });
         }, observerOptions);
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
