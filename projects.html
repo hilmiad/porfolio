@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery | M Hilmy Adhiawan</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        /* --- 1. VARIABLES & RESET --- */
+        :root {
+            --bg-body: #f8f9fa; --bg-card: #ffffff; --text-main: #2d3436; --text-muted: #636e72;
+            --accent-main: #0984e3; 
+            --accent-gradient: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
+            --color-portfolio: #00b894;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            font-family: 'Outfit', sans-serif; line-height: 1.6; margin: 0;
+            background-color: var(--bg-body); color: var(--text-main);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- NAVIGATION (ADDED) --- */
+        .navigasi {
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 0; right: 0;
+            padding: 15px 5%;
+            
+            /* FLICKER FIX: Opacity ditingkatkan & Hardware Acceleration */
+            background-color: rgba(255, 255, 255, 0.98); 
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            transform: translateZ(0); -webkit-transform: translateZ(0); 
+            
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            box-shadow: var(--shadow-sm); z-index: 9999;
+            border-radius: 0 0 30px 30px; 
+            transition: border-radius 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.menu-open .navigasi { border-radius: 0; background-color: #fff; }
+
+        .nav-items { display: flex; align-items: center; }
+        .menu-links { display: flex; gap: 30px; font-weight: 500; font-size: 16px; }
+        .menu-links a { text-decoration: none; color: var(--text-muted); transition: color 0.3s ease; position: relative; }
+
+        .menu-links a:hover { 
+            background: var(--accent-gradient);
+            background-clip: text; -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .menu-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background: var(--accent-gradient); transition: width 0.3s ease; }
+        .menu-links a:hover::after { width: 100%; }
+
+        /* Nav Right */
+        .nav-right { display: flex; align-items: center; gap: 15px; margin-left: auto; }
+        .buttoncv {
+            background: var(--accent-gradient); color: #fff !important; padding: 10px 28px;
+            border-radius: 50px; font-weight: 600; font-size: 14px; text-decoration: none;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(9, 132, 227, 0.2);
+            white-space: nowrap; border: none;
+        }
+        .buttoncv:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 206, 201, 0.4); }
+        .hamburger { display: none; cursor: pointer; color: var(--text-main); background: none; border: none; padding: 0; outline: none; }
+
+        /* --- BACKGROUND AMBIENT GLOW --- */
+        body::before, body::after {
+            content: ''; position: fixed; z-index: -1; border-radius: 50%;
+            filter: blur(100px); opacity: 0.15; pointer-events: none;
+        }
+        body::before { width: 500px; height: 500px; top: -150px; left: -150px; background: linear-gradient(to right, #0984e3, #6c5ce7); }
+        body::after { width: 600px; height: 600px; bottom: -200px; right: -200px; background: linear-gradient(to right, #00cec9, #00b894); }
+
+        /* --- ANIMATION --- */
+        .reveal { opacity: 0; transform: translateY(50px) scale(0.95); filter: blur(10px); transition: all 1s cubic-bezier(0.23, 1, 0.32, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+
+        /* --- GALLERY LAYOUT --- */
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 25px; padding-top: 140px; /* Padding ditambah krn ada Navbar */ }
+
+        /* Header Simple (Tanpa Tombol Back) */
+        .gallery-header { margin-bottom: 60px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05); text-align: center; transition: border-color 0.3s ease; }
+        .gallery-title h1 { font-family: 'Playfair Display', serif; margin: 0; font-size: 32px; }
+        .gallery-title p { margin: 5px 0 0; color: var(--text-muted); }
+
+        /* Card Styling */
+        .gallery-item {
+            background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 40px; margin-bottom: 60px;
+            box-shadow: var(--shadow-sm); border: 1px solid rgba(255,255,255,0.6);
+            position: relative; overflow: hidden;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background-color: var(--color-portfolio);
+        }
+
+        .project-meta {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 25px; flex-wrap: wrap; gap: 15px;
+        }
+        .meta-info h2 { font-family: 'Playfair Display', serif; margin: 0 0 5px; font-size: 28px; }
+        .meta-tags { display: flex; gap: 10px; font-size: 14px; font-weight: 600; }
+        .badge {
+            padding: 4px 12px; border-radius: 50px;
+            background: rgba(0, 184, 148, 0.1); color: var(--color-portfolio);
+        }
+        .badge-year { background: #eee; color: #636e72; transition: background-color 0.3s ease, color 0.3s ease; }
+
+        .image-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .image-wrapper { border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md); transition: transform 0.3s ease; }
+        .image-wrapper:hover { transform: scale(1.02); }
+        .image-wrapper img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16/9; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            /* Nav Mobile Styling */
+            .navigasi { padding: 15px 5%; border-radius: 0 0 30px 30px; }
+            .hamburger { display: block; }
+            .buttoncv { padding: 8px 20px; font-size: 13px; }
+            
+            .nav-items {
+                position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff;
+                flex-direction: column; align-items: flex-start; padding: 30px;
+                border-radius: 0 0 30px 30px; border-top: 1px solid rgba(0,0,0,0.05);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1); opacity: 0; visibility: hidden;
+                transform: translateY(-20px); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                z-index: 999; margin: 0;
+            }
+            .nav-items.active { opacity: 1; visibility: visible; transform: translateY(0); }
+            .menu-links { flex-direction: column; width: 100%; gap: 15px; margin-bottom: 0; }
+            .menu-links a { display: block; font-size: 18px; padding-bottom: 10px; border-bottom: 1px solid #f1f1f1; }
+            .menu-links a::after { display: none; }
+
+            .container { padding-top: 120px; }
+            .image-grid { grid-template-columns: 1fr; }
+            .gallery-item { padding: 25px; }
+        }
+
+        /* --- DARK MODE (SYSTEM SETTING) --- */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #121212;
+                --bg-card: #1e1e1e;
+                --text-main: #dfe6e9;
+                --text-muted: #b2bec3;
+                
+                /* Bayangan dipertebal untuk mode gelap */
+                --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+                --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
+            }
+
+            /* Navigasi & Menu */
+            .navigasi {
+                background-color: rgba(30, 30, 30, 0.98);
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            body.menu-open .navigasi, 
+            .nav-items {
+                background-color: #1e1e1e;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            /* Komponen Galeri */
+            .gallery-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
+            
+            .gallery-item {
+                background: rgba(30,30,30,0.8);
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+
+            /* Badge Tahun (agar tidak terlalu terang di dark mode) */
+            .badge-year {
+                background: rgba(255,255,255,0.1);
+                color: #dfe6e9;
+            }
+            
+            /* Garis pemisah di menu mobile */
+            @media (max-width: 768px) {
+                .menu-links a { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navigasi">
+        <div class="nav-items" id="nav-menu">
+            <div class="menu-links">
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+                <a href="index.html#history" class="nav-link">History</a>
+                <a href="index.html#career" class="nav-link">Experience</a>
+                <a href="index.html#repository" class="nav-link">Archive</a>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="#" target="_blank" class="buttoncv">Download CV</a>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="gallery-header reveal">
+            <div class="gallery-title">
+                <h1>Project Gallery</h1>
+                <p>Visual showcase of my applications & websites.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item reveal">
+            <div class="project-meta">
+                <div class="meta-info"><h2>Tasrify</h2><p style="margin:0; color:var(--text-muted);">AR Learning App • Unity Engine</p></div>
+                <div class="meta-tags"><span class="badge">APK / Android</span><span class="badge badge-year">2025</span></div>
+            </div>
+            <div class="image-grid">
+                <div class="image-wrapper"><img src="https://placehold.co/600x340/00b894/ffffff?text=Tasrify+Main+Menu" alt="Tasrify 1"></div>
+                <div class="image-wrapper"><img src="https://placehold.co/600x340/00b894/ffffff?text=AR+Camera+View" alt="Tasrify 2"></div>
+            </div>
+        </div>
+
+        <div class="gallery-item reveal">
+            <div class="project-meta">
+                <div class="meta-info"><h2>Lyricz</h2><p style="margin:0; color:var(--text-muted);">Music & Entertainment App • Unity Engine</p></div>
+                <div class="meta-tags"><span class="badge">APK / Android</span><span class="badge badge-year">2025</span></div>
+            </div>
+            <div class="image-grid">
+                <div class="image-wrapper"><img src="https://placehold.co/600x340/0984e3/ffffff?text=Lyricz+Playlist+UI" alt="Lyricz 1"></div>
+                <div class="image-wrapper"><img src="https://placehold.co/600x340/0984e3/ffffff?text=Lyric+Editor+View" alt="Lyricz 2"></div>
+            </div>
+        </div>
+
+        <div class="gallery-item reveal">
+            <div class="project-meta">
+                <div class="meta-info"><h2>Personal Portfolio</h2><p style="margin:0; color:var(--text-muted);">Digital Resume • HTML/CSS/JS</p></div>
+                <div class="meta-tags"><span class="badge">Website</span><span class="badge badge-year">2025</span></div>
+            </div>
+            <div class="image-grid">
+                <div class="image-wrapper"><img src="https://placehold.co/600x340/6c5ce7/ffffff?text=Portfolio+Desktop+View" alt="Web 1"></div>
+                <div class="image-wrapper"><img src="https://placehold.co/600x340/6c5ce7/ffffff?text=Portfolio+Mobile+View" alt="Web 2"></div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;" class="reveal">
+            <p style="color: var(--text-muted);">End of Gallery</p>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+
+        // Script Navbar Mobile
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const body = document.body;
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function toggleMenu() {
+            const isActive = navMenu.classList.toggle('active');
+            body.classList.toggle('menu-open');
+            hamburgerBtn.innerHTML = isActive ? feather.icons['x'].toSvg() : feather.icons['menu'].toSvg();
+        }
+
+        hamburgerBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
+        document.addEventListener('click', (e) => { if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) toggleMenu(); });
+        navLinks.forEach(link => { link.addEventListener('click', () => { if (navMenu.classList.contains('active')) toggleMenu(); }); });
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); } 
+                else { entry.target.classList.remove('active'); }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
