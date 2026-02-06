@@ -20,8 +20,8 @@ Proyek ini dibangun menggunakan struktur web standar:
 
 ## 👤 Kontak
 Jika Anda ingin berdiskusi atau bekerja sama, silakan hubungi saya melalui:
-- **Email**: [Isi Email Anda]
-- **LinkedIn**: [Isi Link LinkedIn Anda]
+- **Email**: [adhiawanhilmy10@gmail.com]
+- **LinkedIn**: [linkedin/in/hilmyad]
 
 ---
 *Dibuat oleh [Nama Anda]*
