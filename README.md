@@ -4,7 +4,7 @@ Repositori ini berisi kode sumber untuk situs web portofolio pribadi saya yang m
 
 ## 🚀 Demo
 Anda dapat mengunjungi situs web yang sudah dideploy di sini: 
-**[Lihat portofolio saya](hilmiad.github.io/porfolio/**
+**[Lihat portofolio saya](hilmiad.github.io/porfolio/)**
 
 ## 📂 Struktur Proyek
 Proyek ini dibangun menggunakan struktur web standar:
