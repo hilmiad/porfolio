@@ -1,6 +1,6 @@
 # My Portfolio
 
-Repositori ini berisi kode sumber untuk situs web portofolio pribadi saya yang menampilkan proyek, keterampilan, dan pengalaman saya.
+Repositori ini berisi kode sumber untuk situs web portofolio pribadi yang menampilkan proyek, keterampilan, dan pengalaman saya.
 
 ## 🚀 Demo
 Anda dapat mengunjungi situs web-nya di sini: 
