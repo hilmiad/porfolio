@@ -3,7 +3,7 @@
 Repositori ini berisi kode sumber untuk situs web portofolio pribadi saya yang menampilkan proyek, keterampilan, dan pengalaman saya.
 
 ## 🚀 Demo
-Anda dapat mengunjungi situs web yang sudah dideploy di sini: 
+Anda dapat mengunjungi situs web-nya di sini: 
 **[Lihat portofolio saya](https://hilmiad.github.io/porfolio/)**
 
 ## 📂 Struktur Proyek
@@ -21,7 +21,7 @@ Proyek ini dibangun menggunakan struktur web standar:
 ## 👤 Kontak
 Jika Anda ingin berdiskusi atau bekerja sama, silakan hubungi saya melalui:
 - **Email**: [adhiawanhilmy10@gmail.com]
-- **LinkedIn**: [linkedin/in/hilmyad]
+- **LinkedIn**: [www.linkedin.com/in/hilmyad]
 
 ---
 *Dibuat oleh [Nama Anda]*
