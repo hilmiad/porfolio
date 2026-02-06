@@ -1,6 +1,5 @@
 feather.replace();
 
-        // Script Navbar Mobile
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
         const body = document.body;
@@ -16,12 +15,10 @@ feather.replace();
         document.addEventListener('click', (e) => { if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) toggleMenu(); });
         navLinks.forEach(link => { link.addEventListener('click', () => { if (navMenu.classList.contains('active')) toggleMenu(); }); });
 
-        // Scroll Reveal (FIXED)
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) { 
                     entry.target.classList.add('active'); 
-                    // PENTING: Stop mengamati elemen setelah muncul agar tidak berkedip/hilang
                     observer.unobserve(entry.target); 
                 } 
             });

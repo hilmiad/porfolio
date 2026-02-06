@@ -19,7 +19,6 @@ feather.replace();
             entries.forEach(entry => {
                 if (entry.isIntersecting) { 
                     entry.target.classList.add('active'); 
-                    // FIX: Stop observing setelah muncul agar tidak hilang-hilang
                     observer.unobserve(entry.target); 
                 } 
             });
