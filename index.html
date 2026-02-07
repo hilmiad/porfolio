@@ -1,46 +1,178 @@
-<div class="card span-2 reveal reveal-delay-1">
-    <h3>Education</h3>
-    <p><strong>Bachelor of Computer Science (S.Kom)</strong><br><span class="accent-text-simple">Tahun lulus: 2025</span><br><strong>IPK: 3.17 / 4.00</strong><br>Keahlian: Teknologi Multimedia dan Gim.</p>
-</div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | M Hilmy Adhiawan</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 
-<div class="card span-2 reveal reveal-delay-2">
-    <div class="project-header">
-        <h3 class="no-margin">Featured Projects</h3>
-        <a href="projects.html" class="project-link no-margin">Showcase &rarr;</a>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+    <nav class="navigasi">
+        <div class="nav-items" id="nav-menu">
+            <div class="menu-links">
+                <a href="#about" class="nav-link">Profile</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#academic" class="nav-link">Academic</a>
+                <a href="#career" class="nav-link">Experiences</a>
+                <a href="#repository" class="nav-link">Channels</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="cvhilmi.pdf" download class="buttoncv">Hire Me</a>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <header class="homepage reveal">
+            <div class="homepage-text">
+                <h1>Hello, I'm <span class="accent-text">Hilmy</span>.</h1>
+                <p>A Bachelor of Computer Science passionate about <span class="accent-text">Unity Development</span>, <span class="accent-text">Augmented Reality</span>, and crafting interactive digital experiences.</p>
+            </div>
+            <img src="fotoformal.jpeg" alt="Hilmy Profile">
+        </header>
+
+        <section id="about">
+            <div class="section-title reveal"><h2>About Me</h2></div>
+            <div class="grid-wrapper">
+                <div class="card span-2 reveal reveal-delay-1">
+                    <h3>Background</h3>
+                    <p>Sebagai lulusan Sarjana Komputer dengan pemahaman mendalam mengenai sistem operasi Android, saya memilih spesialisasi pada <strong>Teknologi Multimedia dan Game</strong>. Fokus penelitian saya berpusat pada pengembangan aplikasi media pembelajaran interaktif berbasis <strong>Augmented Reality (AR)</strong> yang dibangun menggunakan Unity Engine. Saya berdedikasi untuk menciptakan solusi digital yang tidak hanya fungsional, tetapi juga memberikan pengalaman visual yang imersif.</p>
+                </div>
+                <div class="card reveal reveal-delay-2">
+                    <h3>Focus</h3>
+                    <ul>
+                        <li>Unity Mobile App Development</li>
+                        <li>Augmented Reality</li>
+                        <li>Frontend Development</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <div class="section-title reveal"><h2>Portfolio & Skills</h2></div>
+            <div class="grid-wrapper">
+                <div class="card reveal reveal-delay-1">
+                    <h3>Tech Stack</h3>
+                    <ul>
+                        <li><strong>Core:</strong> C#, JavaScript</li>
+                        <li><strong>Web:</strong> HTML5, CSS3, JavaScript</li>
+                        <li><strong>Tools:</strong> Unity, Vuforia, Visual Studio, VS Code, Git, Figma</li>
+                    </ul>
+                </div>
+                
+                <div class="card span-2 reveal reveal-delay-2">
+                    <div class="project-header">
+                        <h3 class="no-margin">Featured Projects</h3>
+                        <a href="projects.html" class="project-link no-margin">Showcase &rarr;</a>
+                    </div>
+
+                    <div class="project-item">
+                        <h4 class="project-title">📱 Tasrify: AR Learning App</h4>
+                        <p>Aplikasi pembelajaran Ilmu Tasrif berbasis Unity yang terintegrasi dengan teknologi <strong>AR Marker-Based Tracking</strong>.</p>
+                        <a href="https://github.com/hilmiad/tasrify.git" class="project-link">View Source Code &rarr;</a>
+                    </div>
+                    <div class="project-item">
+                        <h4 class="project-title">🎵 Lyricz: Lirik lagu favorit</h4>
+                        <p>Aplikasi mobile Android yang dibuat menggunakan Unity Engine berisi kumpulan lagu favorit.</p>
+                        <a href="#" class="project-link">View Source Code &rarr;</a>
+                    </div>
+                    <div class="project-item">
+                        <h4 class="project-title">🌐 Personal Portfolio Web</h4>
+                        <p>Portofolio digital yang dibangun menggunakan HTML, CSS, dan JS.</p>
+                        <a href="https://github.com/hilmiad/portofolio" class="project-link">View Source Code &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="academic">
+            <div class="section-title reveal"><h2>Academic</h2></div>
+            <div class="grid-wrapper">
+                <div class="card span-2 reveal reveal-delay-1">
+                    <h3>Education</h3>
+                    <p><strong>Bachelor of Computer Science (S.Kom)</strong><br><span class="accent-text-simple">Tahun lulus: 2025</span><br><strong>IPK: 3.17 / 4.00</strong><br>Keahlian: Teknologi Multimedia dan Gim.</p>
+                </div>
+                <div class="card reveal reveal-delay-2">
+                    <h3>Certification</h3>
+                    <ul><li><strong>Junior Web Programmer</strong><br><small>BNSP / LSP</small></li></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="career">
+            <div class="section-title reveal"><h2>Experience</h2></div>
+            <div class="grid-wrapper">
+                <div class="card span-2 reveal reveal-delay-1">
+                    <h3>Work</h3>
+                    <div class="job-item">
+                        <h4 class="project-title">PT Lintek Radifella <small class="float-right">2025</small></h4>
+                        <p class="job-role">Data Entry</p>
+                        <p>Bertanggung jawab atas manajemen dan input data laporan pemasangan listrik program Listrik Desa Jawa Barat 2025.</p>
+                    </div>
+                    <div class="job-item">
+                        <h4 class="project-title">DPRD Kota Tasikmalaya <small class="float-right">2023</small></h4>
+                        <p class="job-role">Internship</p>
+                        <p>Merancang aplikasi arsip surat dan desain buku profil DPRD.</p>
+                    </div>
+                </div>
+                <div class="card reveal reveal-delay-2">
+                    <h3>Organization</h3>
+                    <div class="job-item">
+                        <h4 class="project-title">Wakil Ketua BEM FT <small class="float-right">2023</small></h4>
+                        <p>Mengawasi dan mengelola pelaksanaan program kerja BEM Fakultas Teknik.</p>
+                    </div>
+                    <div class="job-item">
+                        <h4 class="project-title">Kaderisasi HMIF <small class="float-right">2022</small></h4>
+                        <p>Merumuskan strategi penerus organisasi Himpunan Mahasiswa Informatika.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="repository">
+            <div class="section-title reveal"><h2>Channels</h2></div>
+            <div class="grid-wrapper">
+                <div class="card reveal reveal-delay-1"> 
+                    <div class="channel-header">
+                        <i data-feather="github" class="icon-repo"></i>
+                        <h3 class="no-margin">GitHub</h3>
+                    </div>
+                    <p>Cek koleksi proyek perancangan dan pengembangan aplikasi saya di sini</p>
+                    <a href="https://github.com/hilmiad" target="_blank" class="channel-link link-github">Visit Profile &rarr;</a>
+                </div>
+                <div class="card reveal reveal-delay-2"> 
+                    <div class="channel-header">
+                        <i data-feather="linkedin" class="icon-linkedin"></i>
+                        <h3 class="no-margin">LinkedIn</h3>
+                    </div>
+                    <p>Terhubung secara profesional dan lihat pembaruan karier saya di LinkedIn.</p>
+                    <a href="https://linkedin.com/in/hilmyad" target="_blank" class="channel-link link-linkedin">Connect &rarr;</a>
+                </div>
+                <div class="card reveal reveal-delay-3"> 
+                    <div class="channel-header">
+                        <i data-feather="instagram" class="icon-instagram"></i>
+                        <h3 class="no-margin">Instagram</h3>
+                    </div>
+                    <p>Ikuti perjalanan harian dan dokumentasi visual proyek saya di sini.</p>
+                    <a href="https://instagram.com/hilmii________" target="_blank" class="channel-link link-instagram">Follow &rarr;</a>
+                </div>
+            </div>
+        </section>
+        
+        <div class="footer-spacer"></div>
     </div>
-    </div>
-
-<div class="job-item">
-    <h4 class="project-title">PT Lintek Radifella <small class="float-right">2025</small></h4>
-    <p class="job-role">Data Entry</p>
-    <p>Bertanggung jawab atas manajemen dan input data laporan pemasangan listrik program Listrik Desa Jawa Barat 2025.</p>
-</div>
-
-<div class="card reveal reveal-delay-1"> 
-    <div class="channel-header">
-        <i data-feather="github" class="icon-repo"></i>
-        <h3 class="no-margin">GitHub</h3>
-    </div>
-    <p>Cek koleksi proyek perancangan dan pengembangan aplikasi saya di sini</p>
-    <a href="https://github.com/hilmiad" target="_blank" class="channel-link link-github">Visit Profile &rarr;</a>
-</div>
-
-<div class="card reveal reveal-delay-2"> 
-    <div class="channel-header">
-        <i data-feather="linkedin" class="icon-linkedin"></i>
-        <h3 class="no-margin">LinkedIn</h3>
-    </div>
-    <p>Terhubung secara profesional dan lihat pembaruan karier saya di LinkedIn.</p>
-    <a href="https://linkedin.com/in/hilmyad" target="_blank" class="channel-link link-linkedin">Connect &rarr;</a>
-</div>
-
-<div class="card reveal reveal-delay-3"> 
-    <div class="channel-header">
-        <i data-feather="instagram" class="icon-instagram"></i>
-        <h3 class="no-margin">Instagram</h3>
-    </div>
-    <p>Ikuti perjalanan harian dan dokumentasi visual proyek saya di sini.</p>
-    <a href="https://instagram.com/hilmii________" target="_blank" class="channel-link link-instagram">Follow &rarr;</a>
-</div>
-
-<div class="footer-spacer"></div>
+    <script src="index.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
